@@ -1,0 +1,178 @@
+html, body{
+    height: 100vh;
+    max-height: 100vh;
+    overflow: hidden;
+    width: 100%;
+    font-family: sans-serif;
+}
+
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-size: 14px;
+}
+
+section{
+    display: block;
+}
+
+body{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-items: center;
+    align-content: stretch;
+    margin: 0 auto;
+}
+
+/* input{   
+    appearance: none;
+    border-radius: 10px;
+    border: 1px solid rgb(146, 146, 146);
+    background-color: rgb(255, 255, 255);
+    padding: 1px 8px;
+}
+
+input.input-error{
+    border-color: rgb(255, 79, 79) !important;
+}
+
+.input-error-text{
+    height: 11px;
+    width: 180px;
+    display: none;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%, 0);
+    color: rgb(255, 79, 79);
+    text-align: right;
+    font-size: 13px;
+}
+
+input.input-error + .input-error-text{
+    display: block;
+}
+
+input:not([type=checkbox]){
+    height: 24px;
+}
+
+input[type=checkbox] {
+    height: 18px;
+    width: 18px;
+    margin: 3px 4px;
+    cursor: pointer;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type=number] {
+    -moz-appearance: textfield;
+} */
+
+button{
+    height: 42px;
+    border-radius: 10px;
+    padding: 0 15px;
+    font-size: 18px;
+    text-shadow: 0px 0px 1px rgb(158, 158, 158);
+    transition: all 200ms ease;
+}
+
+button:not(.disabled-btn){
+    cursor: pointer;
+}
+
+button:focus,
+textarea:focus{
+    outline: none;
+}
+
+#heading{
+    width: 100%;
+    position: relative;
+    background-color: rgb(253, 253, 253);
+    box-shadow: 0 0 5px rgb(180, 180, 180);
+    z-index: 5;
+    flex: 0 1 auto;
+}
+
+h1{
+    font-size: 26px;
+    text-align: center;
+    padding: 20px 10px 15px 10px;
+}
+
+#actions{
+    width: 100%;
+    max-width: 500px;
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: center;
+    align-content: center;
+    margin: 0 auto;
+    padding: 20px 15px;
+    flex: 0 1 auto;
+}
+
+.connect-btn{
+    background-color: rgb(138, 200, 253);
+    border: 3px solid rgb(138, 200, 253);
+}
+
+.start-btn{
+    background-color: rgb(135, 241, 137);
+    border: 3px solid rgb(135, 241, 137);
+}
+
+.stop-btn{
+    background-color: rgb(255, 164, 139);
+    border: 3px solid rgb(255, 164, 139);
+}
+
+.disconnect-btn{
+    background-color: rgb(227, 149, 255);
+    border: 3px solid rgb(227, 149, 255);
+}
+
+.disabled-btn{
+    cursor: default;
+    background-color: transparent !important;
+    opacity: 0.6;
+}
+
+#console{
+    width: 100%;
+    padding: 0 15px 15px 15px;
+    flex: 0 1 100vh;
+}
+
+#console-view{
+    height: 100%;
+    max-height: 100%;
+    width: 100%;
+    overflow-y: scroll;
+    border: 1px solid rgb(0, 0, 0);
+}
+
+.error-message{
+    color: rgb(200, 0, 0);
+}
+
+#clear-btn{
+    position: absolute;
+    right: 20px;
+    bottom: 20px;
+    background-color: rgb(255, 139, 139);
+    border: 3px solid rgb(255, 139, 139);
+}
