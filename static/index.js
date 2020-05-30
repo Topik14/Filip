@@ -89,10 +89,10 @@ function consoleLog(messageType, messageText, isError = false){
     if(!isError){
         consoleView.innerHTML += "<span>" + messageType + ": " + messageText + "</span><br>";
     }else{
-        consoleView.innerHTML += "<span class='error-message'>" + messageType + ": " + messageText + "</span><br>";
+        consoleView.innerHTML += "<span class='text-danger font-weight-bold'>" + messageType + ": " + messageText + "</span><br>";
     }
 
-    consoleView.scrollTop = consoleView.scrollHeight;
+    consoleSection.scrollTop = consoleSection.scrollHeight;
 }
 
 //
@@ -120,7 +120,7 @@ window.onresize = function(){
     }, 50);
 }
 
-consoleSection.style.maxHeight = window.innerHeight - headingSection.clientHeight - actionsSection.clientHeight + "px";
+consoleSection.style.maxHeight = window.innerHeight - headingSection.clientHeight - actionsSection.clientHeight - 71 + "px";
 
 //
 //ACCELERATION, ROTATION RATE, ORIENTATION
@@ -253,13 +253,17 @@ function streamStart(){
 //
 var dataId = 0;
 
+const checkboxAcceleration = document.getElementById('checkbox-acceleration');
+const checkboxRotationRate = document.getElementById('checkbox-rotation-rate');
+const checkboxOrientation = document.getElementById('checkbox-orientation');
+
 function streamData(){
     let data = JSON.stringify({
         id: dataId,
         deltaTime: SAMPLING_INTERVAL,
-        acceleration: currentAcceleration,
-        rotationRate: currentRotationRate,
-        orientation: currentOrientation
+        acceleration: checkboxAcceleration.checked ? currentAcceleration : undefined,
+        rotationRate: checkboxRotationRate.checked ? currentRotationRate : undefined,
+        orientation: checkboxOrientation.checked ? currentOrientation : undefined
     });
 
     consoleLog("OUT", data);
