@@ -381,7 +381,7 @@ var gaugeZ = new Gauge(targetZ).setOptions(opts);
     gauge.maxValue = 1; // set max gauge value
     gauge.setMinValue(-1);  // Prefer setter over gauge.minValue = 0
     gauge.animationSpeed = 32; // set animation speed (32 is default value)
-
+    gauge.set(0);
 });
 
 
