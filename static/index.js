@@ -129,7 +129,7 @@ var currentAcceleration = [0, 0, 0];
 var currentRotationRate = [0, 0, 0];
 var currentOrientation = [0, 0, 0];
 
-if('LinearAccelerationSensor' in window && 'Gyroscope' in window){    
+if('LinearAccelerationSensor' in window && 'Gyroscope' in window){
     var accelerometer = new LinearAccelerationSensor();
     accelerometer.addEventListener('reading', accelerationChange, true);
     accelerometer.start();
@@ -212,7 +212,7 @@ function serverConnect(){
         if(controlButtonStatus == buttonStatus.STOP){
             streamStop();
         }
-        
+
         if(connectionButtonStatus == buttonStatus.DISCONNECT){
             connectionButtonStatus = changeButtonStatus(connectionButton, "disconnect-btn", "CONNECT");
         }
@@ -338,6 +338,55 @@ function updateGraph() {
     chart.update();
 }
 
+
+//
+//Gauge
+//
+var targetX = document.getElementById('myGaugeX');
+var targetY = document.getElementById('myGaugeY');
+var targetZ = document.getElementById('myGaugeZ');
+
+
+var opts = {
+
+    staticLabels: {
+        font: "12px sans-serif",  // Specifies font
+        labels: [-1, -0.5, 0, 0.5, 1],  // Print labels at these values
+        color: "#000000",  // Optional: Label text color
+        fractionDigits: 1  // Optional: Numerical precision. 0=round off.
+    },
+    angle: 0.15, // The span of the gauge arc
+    lineWidth: 0.44, // The line thickness
+    radiusScale: 1, // Relative radius
+    pointer: {
+        length: 0.6, // // Relative to gauge radius
+        strokeWidth: 0.035, // The thickness
+        color: '#000000' // Fill color
+    },
+    limitMax: false,     // If false, max value increases automatically if value > maxValue
+    limitMin: false,     // If true, the min value of the gauge will be fixed
+    colorStart: '#E0E0E0',   // Colors
+    colorStop: '#E0E0E0',    // just experiment with them
+    strokeColor: '#E0E0E0',  // to see which ones work best for you
+    generateGradient: true,
+    highDpiSupport: true,     // High resolution support
+
+};
+
+var gaugeX = new Gauge(targetX).setOptions(opts); // create sexy gauge!
+var gaugeY = new Gauge(targetY).setOptions(opts);
+var gaugeZ = new Gauge(targetZ).setOptions(opts);
+
+[gaugeX, gaugeY, gaugeZ].forEach(gauge => {
+    gauge.maxValue = 1; // set max gauge value
+    gauge.setMinValue(-1);  // Prefer setter over gauge.minValue = 0
+    gauge.animationSpeed = 32; // set animation speed (32 is default value)
+
+});
+
+
+
+
 //
 //STREAM DATA
 //
@@ -348,7 +397,7 @@ const checkboxRotationRate = document.getElementById('checkbox-rotation-rate');
 const checkboxOrientation = document.getElementById('checkbox-orientation');
 
 function roundValue(array){
-	return array.map(item => item.toFixed(3));
+    return array.map(item => item.toFixed(3));
 }
 
 
@@ -376,6 +425,25 @@ function streamData(){
     orientationData.push({x: currentOrientation[0], y: currentOrientation[1], z: currentOrientation[2]});
     updateGraph();
 
+    switch (graphType) {
+        case 'acceleration':
+            gaugeX.set(currentAcceleration[0]);
+            gaugeY.set(currentAcceleration[1]);
+            gaugeZ.set(currentAcceleration[2]);
+            break;
+        case 'rotationRate':
+            gaugeX.set(currentRotationRate[0]);
+            gaugeY.set(currentRotationRate[1]);
+            gaugeZ.set(currentRotationRate[2]);
+            break;
+        case 'orientation':
+            gaugeX.set(currentOrientation[0]);
+            gaugeY.set(currentOrientation[1]);
+            gaugeZ.set(currentOrientation[2]);
+            break;
+    }
+
+
     consoleLog("OUT", data);
     webSocket.send(data);
 
@@ -401,11 +469,16 @@ function streamStop(){
 //
 
 graphSection = document.getElementById('graph');
+gaugeSection = document.getElementById('gauge');
 const consoleFilterBox = document.getElementById('console-filter-box');
 const navItemConsole = document.getElementById('console-nav-item');
 const navItemAcceleration = document.getElementById('graph-nav-item-acceleration');
 const navItemRotationRate = document.getElementById('graph-nav-item-rotation-rate');
 const navItemOrientation = document.getElementById('graph-nav-item-orientation');
+
+const navItemGaugeAcceleration = document.getElementById('gauge-nav-item-acceleration');
+const navItemGaugeRotationRate = document.getElementById('gauge-nav-item-rotation-rate');
+const navItemGaugeOrientation = document.getElementById('gauge-nav-item-orientation');
 
 function consoleVisibility(value) {
 
@@ -427,9 +500,19 @@ function graphVisibility(value) {
     }
 }
 
+function gaugeVisibility(value) {
+
+    if (value) {
+        gaugeSection.classList.remove('element-hidden');
+    } else {
+        gaugeSection.classList.add('element-hidden');
+    }
+}
+
 navItemConsole.onclick = () => {
     consoleVisibility(true);
     graphVisibility(false);
+    gaugeVisibility(false);
 }
 
 navItemAcceleration.onclick = () => {
@@ -437,6 +520,7 @@ navItemAcceleration.onclick = () => {
     chart.options.title.text = 'Acceleration';
     consoleVisibility(false);
     graphVisibility(true);
+    gaugeVisibility(false);
     updateGraph();
 }
 navItemRotationRate.onclick = () => {
@@ -444,6 +528,7 @@ navItemRotationRate.onclick = () => {
     chart.options.title.text = 'Rotation Rate';
     consoleVisibility(false);
     graphVisibility(true);
+    gaugeVisibility(false);
     updateGraph();
 }
 navItemOrientation.onclick = () => {
@@ -451,5 +536,31 @@ navItemOrientation.onclick = () => {
     chart.options.title.text = 'Orientation';
     consoleVisibility(false);
     graphVisibility(true);
+    gaugeVisibility(false);
     updateGraph();
+}
+
+
+
+navItemGaugeAcceleration.onclick = () => {
+    graphType = 'acceleration';
+
+    consoleVisibility(false);
+    graphVisibility(false);
+    gaugeVisibility(true);
+
+}
+navItemGaugeRotationRate.onclick = () => {
+    graphType = 'rotationRate';
+
+    consoleVisibility(false);
+    graphVisibility(false);
+    gaugeVisibility(true);
+}
+navItemGaugeOrientation.onclick = () => {
+    graphType = 'orientation';
+
+    consoleVisibility(false);
+    graphVisibility(false);
+    gaugeVisibility(true);
 }

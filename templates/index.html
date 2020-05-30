@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Sensors Web App</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="../static/bootstrap/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="../static/bootstrap/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk">
     <link rel="stylesheet" href="../static/chartJS/Chart.min.css">
     <link rel="stylesheet" href="../static/navs.css">
 </head>
@@ -34,6 +34,17 @@
                         <span id="graph-nav-item-acceleration" class="dropdown-item">Acceleration</span>
                         <span id="graph-nav-item-rotation-rate" class="dropdown-item">Rotation Rate</span>
                         <span id="graph-nav-item-orientation" class="dropdown-item">Orientation</span>
+                    </div>
+                </li>
+
+                <li class="nav-item dropdown">
+                    <span class="nav-link dropdown-toggle" id="gauge-nav-item" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Clock
+                    </span>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <span id="gauge-nav-item-acceleration" class="dropdown-item">Acceleration</span>
+                        <span id="gauge-nav-item-rotation-rate" class="dropdown-item">Rotation Rate</span>
+                        <span id="gauge-nav-item-orientation" class="dropdown-item">Orientation</span>
                     </div>
                 </li>
             </ul>
@@ -82,13 +93,30 @@
     <section id="graph" class="border border-dark p-3 overflow-auto element-hidden">
         <canvas id="myChart" class="w-100"></canvas>
     </section>
-</div>
 
-<script src="../static/index.js" defer></script>
-<script src="../static/bootstrap/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"></script>
-<script src="../static/bootstrap/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"></script>
-<script src="../static/bootstrap/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"></script>
+    <section id="gauge" class="border border-dark p-3 overflow-auto element-hidden">
+        <div class="row" >
+            <div class="col-md-4">
+                <div class="text-center">X</div>
+                <canvas id="myGaugeX" class="w-100"></canvas>
+            </div>
+            <div class="col-md-4">
+                <div class="text-center">Y</div>
+                <canvas id="myGaugeY" class="w-100"></canvas>
+            </div>
+            <div class="col-md-4">
+                <div class="text-center">Z</div>
+                <canvas id="myGaugeZ" class="w-100"></canvas>
+            </div>
+        </div>
+    </section>
+
+</div>
+<script src="../static/bootstrap/jquery-3.5.1.slim.min.js"></script>
+<script src="../static/bootstrap/popper.min.js"></script>
+<script src="../static/bootstrap/bootstrap.min.js"></script>
 <script src="../static/chartJS/Chart.min.js"></script>
-<script src="../static/zingChart/zingchart.min.js"></script>
+<script src="../static/gauge/gauge.min.js"></script>
+<script src="../static/index.js" defer></script>
 </body>
 </html>
