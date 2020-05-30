@@ -257,13 +257,18 @@ const checkboxAcceleration = document.getElementById('checkbox-acceleration');
 const checkboxRotationRate = document.getElementById('checkbox-rotation-rate');
 const checkboxOrientation = document.getElementById('checkbox-orientation');
 
+function roundValue(array){
+	return array.map(item => item.toFixed(3));
+}
+
+
 function streamData(){
     let data = JSON.stringify({
         id: dataId,
         deltaTime: SAMPLING_INTERVAL,
-        acceleration: checkboxAcceleration.checked ? currentAcceleration : undefined,
-        rotationRate: checkboxRotationRate.checked ? currentRotationRate : undefined,
-        orientation: checkboxOrientation.checked ? currentOrientation : undefined
+        acceleration: checkboxAcceleration.checked ? roundValue(currentAcceleration) : undefined,
+        rotationRate: checkboxRotationRate.checked ? roundValue(currentRotationRate) : undefined,
+        orientation: checkboxOrientation.checked ? roundValue(currentOrientation) : undefined
     });
 
     consoleLog("OUT", data);
@@ -271,6 +276,7 @@ function streamData(){
 
     dataId++;
 }
+
 
 //
 //STOP STREAMING
