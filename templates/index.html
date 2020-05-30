@@ -6,38 +6,64 @@
     <title>Sensors Web App</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="../static/bootstrap/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="../static/chartJS/Chart.min.css">
+    <link rel="stylesheet" href="../static/navs.css">
 </head>
 <body>
 
-<nav id="heading" class="navbar navbar-dark bg-dark px-0">
-    <div class="container">
-        <a class="navbar-brand" href="#">
+<nav id="heading" class="navbar navbar-dark navbar-expand-md bg-dark">
+    <div class="container-fluid">
+        <span class="navbar-brand">
             Sensors Web App
-        </a>
+        </span>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <span class="nav-link" id="console-nav-item" data-toggle="collapse">Console</span>
+                </li>
+
+                <li class="nav-item dropdown">
+                    <span class="nav-link dropdown-toggle" id="graph-nav-item" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Graph
+                    </span>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <span id="graph-nav-item-acceleration" class="dropdown-item">Acceleration</span>
+                        <span id="graph-nav-item-rotation-rate" class="dropdown-item">Rotation Rate</span>
+                        <span id="graph-nav-item-orientation" class="dropdown-item">Orientation</span>
+                    </div>
+                </li>
+            </ul>
+        </div>
     </div>
 </nav>
 
-<div class="container">
+<div class="container-fluid">
     <section id="actions">
         <div class="row justify-content-between align-items-center my-3">
             <div class="col-auto">
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" id="checkbox-acceleration">
-                    <label class="form-check-label" for="checkbox-acceleration">
-                        Acceleration
-                    </label>
-                </div>
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" id="checkbox-rotation-rate">
-                    <label class="form-check-label" for="checkbox-rotation-rate">
-                        RotationRate
-                    </label>
-                </div>
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" id="checkbox-orientation">
-                    <label class="form-check-label" for="checkbox-orientation">
-                        Orientation
-                    </label>
+                <div id="console-filter-box">
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="checkbox-acceleration">
+                        <label class="form-check-label" for="checkbox-acceleration">
+                            Acceleration
+                        </label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="checkbox-rotation-rate">
+                        <label class="form-check-label" for="checkbox-rotation-rate">
+                            RotationRate
+                        </label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="checkbox-orientation">
+                        <label class="form-check-label" for="checkbox-orientation">
+                            Orientation
+                        </label>
+                    </div>
                 </div>
             </div>
             <div class="col-auto">
@@ -48,16 +74,21 @@
         </div>
     </section>
 
-    <section id="console" class="border border-dark p-3 overflow-auto">
+    <section id="console" class="bg-dark text-white p-3 overflow-auto">
         <div id="console-view">
         </div>
+    </section>
+
+    <section id="graph" class="border border-dark p-3 overflow-auto element-hidden">
+        <canvas id="myChart" class="w-100"></canvas>
     </section>
 </div>
 
 <script src="../static/index.js" defer></script>
-<script src="../static/bootstrap/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-<script src="../static/bootstrap/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-<script src="../static/bootstrap/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
-
+<script src="../static/bootstrap/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"></script>
+<script src="../static/bootstrap/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"></script>
+<script src="../static/bootstrap/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"></script>
+<script src="../static/chartJS/Chart.min.js"></script>
+<script src="../static/zingChart/zingchart.min.js"></script>
 </body>
 </html>
