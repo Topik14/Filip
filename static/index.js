@@ -3,8 +3,8 @@
 //
 const IP_ADDRESS = window.location.hostname;
 const WS_PORT = window.location.port;
-
 //
+//Hallo
 //ACTION BUTTONS
 //
 const buttonStatus = {
