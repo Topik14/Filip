@@ -5,6 +5,7 @@ import tornado.httpserver
 import tornado.ioloop
 import tornado.web
 import tornado.websocket
+import MySQLdb
 
 from tornado.options import parse_command_line
 
@@ -29,6 +30,20 @@ class DataHandler(tornado.websocket.WebSocketHandler):
 
     def on_close(self):
         print("WebSocket closed")
+
+#
+#database
+#
+ 
+config = ConfigParser.ConfigParser()
+config.read('config.cfg')
+myhost = config.get('mysqlDB','host')
+myuser = config.get('mysqlDB','user')
+mypasswd=config.get('mysqlDB','passwd')
+mydb = config.get('mysqlDB','db')
+print myhost
+
+db = MySQLdb.connect(host=myhost,user=myuser,passwd=mypasswd,db=mydb)
 
 
 #

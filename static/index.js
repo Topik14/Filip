@@ -305,15 +305,115 @@ const chart = new Chart(ctx, {
                 }
             }],
             yAxes: [{
+                
+            }]
+        }
+    }
+});
+
+const chartOrientation = new Chart(ctx, {
+    type: 'line',
+    data: {
+        labels: [],
+        datasets: [{
+            label: 'X',
+            data: [],
+            fill: false,
+            borderColor: [
+                'rgb(133,255,99)'
+            ],
+            borderWidth: 1
+        },{
+            label: 'Y',
+            data: [],
+            fill: false,
+            borderColor: [
+                'rgba(255, 99, 132, 1)'
+            ],
+            borderWidth: 1
+        }, {
+            label: 'Z',
+            data: [],
+            fill: false,
+            borderColor: [
+                'rgb(99,151,255)'
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        title: {
+            display: true,
+            text: 'AJKLbjh'
+        },
+        scales: {
+            xAxes: [{
+                scaleLabel: {
+                    display: true,
+                    labelString: 'Data IDs'
+                }
+            }],
+            yAxes: [{
                 ticks: {
-                    min: -1,
-                    max: 1
+                    min: -15,
+                    max: 15
                 }
             }]
         }
     }
 });
 
+const chartAcc = new Chart(ctx, {
+    type: 'line',
+    data: {
+        labels: [],
+        datasets: [{
+            label: 'X',
+            data: [],
+            fill: false,
+            borderColor: [
+                'rgb(133,255,99)'
+            ],
+            borderWidth: 1
+        },{
+            label: 'Y',
+            data: [],
+            fill: false,
+            borderColor: [
+                'rgba(255, 99, 132, 1)'
+            ],
+            borderWidth: 1
+        }, {
+            label: 'Z',
+            data: [],
+            fill: false,
+            borderColor: [
+                'rgb(99,151,255)'
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        title: {
+            display: true,
+            text: 'AJKLbjh'
+        },
+        scales: {
+            xAxes: [{
+                scaleLabel: {
+                    display: true,
+                    labelString: 'Data IDs'
+                }
+            }],
+            yAxes: [{
+                ticks: {
+                    min: -20,
+                    max: 20
+                }
+            }]
+        }
+    }
+});
 function updateGraph() {
     chart.data.labels = labelsData;
 
@@ -383,6 +483,13 @@ var gaugeZ = new Gauge(targetZ).setOptions(opts);
     gauge.animationSpeed = 32; // set animation speed (32 is default value)
     gauge.set(0);
 });
+
+
+//
+// Database
+//
+
+
 
 
 
