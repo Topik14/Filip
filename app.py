@@ -35,15 +35,15 @@ class DataHandler(tornado.websocket.WebSocketHandler):
 #database
 #
  
-config = ConfigParser.ConfigParser()
-config.read('config.cfg')
-myhost = config.get('mysqlDB','host')
-myuser = config.get('mysqlDB','user')
-mypasswd=config.get('mysqlDB','passwd')
-mydb = config.get('mysqlDB','db')
-print myhost
-
-db = MySQLdb.connect(host=myhost,user=myuser,passwd=mypasswd,db=mydb)
+#config = ConfigParser.ConfigParser()
+#config.read('config.cfg')
+#myhost = config.get('mysqlDB','host')
+#myuser = config.get('mysqlDB','user')
+#mypasswd=config.get('mysqlDB','passwd')
+#mydb = config.get('mysqlDB','db')
+#print myhost
+#
+#db = MySQLdb.connect(host=myhost,user=myuser,passwd=mypasswd,db=mydb)
 
 
 #
