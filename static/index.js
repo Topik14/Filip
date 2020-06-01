@@ -404,9 +404,6 @@ var gaugeZ = new Gauge(targetZ).setOptions(opts);
 
 
 
-
-
-
 //
 //STREAM DATA
 //
@@ -500,6 +497,10 @@ const navItemGaugeAcceleration = document.getElementById('gauge-nav-item-acceler
 const navItemGaugeRotationRate = document.getElementById('gauge-nav-item-rotation-rate');
 const navItemGaugeOrientation = document.getElementById('gauge-nav-item-orientation');
 
+const navItemDatabaseAcceleration = document.getElementById('database-nav-item-acceleration');
+const navItemDatabaseRotationRate = document.getElementById('database-nav-item-rotation-rate');
+const navItemDatabaseOrientation = document.getElementById('database-nav-item-orientation');
+
 function consoleVisibility(value) {
 
     if (value) {
@@ -583,4 +584,27 @@ navItemGaugeOrientation.onclick = () => {
     consoleVisibility(false);
     graphVisibility(false);
     gaugeVisibility(true);
+}
+
+navItemDatabaseAcceleration.onclick = () => {
+    graphType = 'acceleration';
+    
+    consoleVisibility(false);
+    graphVisibility(false);
+    gaugeVisibility(false);
+
+}
+navItemDatabaseRotationRate.onclick = () => {
+    graphType = 'rotationRate';
+    
+    consoleVisibility(false);
+    graphVisibility(false);
+    gaugeVisibility(false);
+}
+navItemDatabaseOrientation.onclick = () => {
+    graphType = 'orientation';
+    
+    consoleVisibility(false);
+    graphVisibility(false);
+    gaugeVisibility(false);
 }
