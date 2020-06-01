@@ -311,109 +311,7 @@ const chart = new Chart(ctx, {
     }
 });
 
-const chartOrientation = new Chart(ctx, {
-    type: 'line',
-    data: {
-        labels: [],
-        datasets: [{
-            label: 'X',
-            data: [],
-            fill: false,
-            borderColor: [
-                'rgb(133,255,99)'
-            ],
-            borderWidth: 1
-        },{
-            label: 'Y',
-            data: [],
-            fill: false,
-            borderColor: [
-                'rgba(255, 99, 132, 1)'
-            ],
-            borderWidth: 1
-        }, {
-            label: 'Z',
-            data: [],
-            fill: false,
-            borderColor: [
-                'rgb(99,151,255)'
-            ],
-            borderWidth: 1
-        }]
-    },
-    options: {
-        title: {
-            display: true,
-            text: 'AJKLbjh'
-        },
-        scales: {
-            xAxes: [{
-                scaleLabel: {
-                    display: true,
-                    labelString: 'Data IDs'
-                }
-            }],
-            yAxes: [{
-                ticks: {
-                    min: -15,
-                    max: 15
-                }
-            }]
-        }
-    }
-});
 
-const chartAcc = new Chart(ctx, {
-    type: 'line',
-    data: {
-        labels: [],
-        datasets: [{
-            label: 'X',
-            data: [],
-            fill: false,
-            borderColor: [
-                'rgb(133,255,99)'
-            ],
-            borderWidth: 1
-        },{
-            label: 'Y',
-            data: [],
-            fill: false,
-            borderColor: [
-                'rgba(255, 99, 132, 1)'
-            ],
-            borderWidth: 1
-        }, {
-            label: 'Z',
-            data: [],
-            fill: false,
-            borderColor: [
-                'rgb(99,151,255)'
-            ],
-            borderWidth: 1
-        }]
-    },
-    options: {
-        title: {
-            display: true,
-            text: 'AJKLbjh'
-        },
-        scales: {
-            xAxes: [{
-                scaleLabel: {
-                    display: true,
-                    labelString: 'Data IDs'
-                }
-            }],
-            yAxes: [{
-                ticks: {
-                    min: -20,
-                    max: 20
-                }
-            }]
-        }
-    }
-});
 function updateGraph() {
     chart.data.labels = labelsData;
 
@@ -451,11 +349,11 @@ var opts = {
 
     staticLabels: {
         font: "12px sans-serif",  // Specifies font
-        labels: [-1, -0.5, 0, 0.5, 1],  // Print labels at these values
+        labels: [-5, -2.5, 0, 2.5, 5],  // Print labels at these values
         color: "#000000",  // Optional: Label text color
         fractionDigits: 1  // Optional: Numerical precision. 0=round off.
     },
-    angle: 0.15, // The span of the gauge arc
+    angle: 0, // The span of the gauge arc
     lineWidth: 0.44, // The line thickness
     radiusScale: 1, // Relative radius
     pointer: {
@@ -471,6 +369,17 @@ var opts = {
     generateGradient: true,
     highDpiSupport: true,     // High resolution support
 
+    renderTicks: {
+        divisions: 4,
+        divWidth: 1.6,
+        divLength: 0.7,
+        divColor: '#333333',
+        subDivisions: 6,
+        subLength: 0.5,
+        subWidth: 0.6,
+        subColor: '#666666'
+      }
+
 };
 
 var gaugeX = new Gauge(targetX).setOptions(opts); 
@@ -478,8 +387,8 @@ var gaugeY = new Gauge(targetY).setOptions(opts);
 var gaugeZ = new Gauge(targetZ).setOptions(opts);
 
 [gaugeX, gaugeY, gaugeZ].forEach(gauge => {
-    gauge.maxValue = 1; // set max gauge value
-    gauge.setMinValue(-1);  // Prefer setter over gauge.minValue = 0
+    gauge.maxValue = 5; // set max gauge value
+    gauge.setMinValue(-5);  // Prefer setter over gauge.minValue = 0
     gauge.animationSpeed = 32; // set animation speed (32 is default value)
     gauge.set(0);
 });
