@@ -373,7 +373,7 @@ var opts = {
 
 };
 
-var gaugeX = new Gauge(targetX).setOptions(opts); // create sexy gauge!
+var gaugeX = new Gauge(targetX).setOptions(opts); 
 var gaugeY = new Gauge(targetY).setOptions(opts);
 var gaugeZ = new Gauge(targetZ).setOptions(opts);
 
@@ -397,7 +397,7 @@ const checkboxRotationRate = document.getElementById('checkbox-rotation-rate');
 const checkboxOrientation = document.getElementById('checkbox-orientation');
 
 function roundValue(array){
-    return array.map(item => item.toFixed(3));
+    return array.map(item => item.toFixed(3));   //round value
 }
 
 
@@ -412,7 +412,7 @@ function streamData(){
 
 
     const count = chart.data.labels.length;
-    if (count > 20) {
+    if (count > 15) {
         labelsData.shift();
         accelerationData.shift();
         rotationRateData.shift();
