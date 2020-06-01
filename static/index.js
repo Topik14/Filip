@@ -35,7 +35,7 @@ connectionButton.onclick = function(){
 //CONTROL
 //
 var currentStream;
-const SAMPLING_INTERVAL = 200;
+const SAMPLING_INTERVAL = 500;
 
 controlButton.onclick = function(){
     if(controlButtonStatus === buttonStatus.START){
