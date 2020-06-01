@@ -382,9 +382,13 @@ var opts = {
 
 };
 
+
+
 var gaugeX = new Gauge(targetX).setOptions(opts); 
 var gaugeY = new Gauge(targetY).setOptions(opts);
 var gaugeZ = new Gauge(targetZ).setOptions(opts);
+
+
 
 [gaugeX, gaugeY, gaugeZ].forEach(gauge => {
     gauge.maxValue = 5; // set max gauge value
@@ -392,7 +396,7 @@ var gaugeZ = new Gauge(targetZ).setOptions(opts);
     gauge.animationSpeed = 32; // set animation speed (32 is default value)
     gauge.set(0);
 });
-
+  
 
 //
 // Database
