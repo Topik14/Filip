@@ -420,7 +420,7 @@ $("#database-nav-item-rotation-rate").click(function(){
     consoleLog("Saved");
     $.ajax({
         type: 'POST',
-        url: "/db",
+        url: "/dbfile",
         data: JSON.stringify({'data':rotationRateData}),
         dataType: "json",
         success: function (resultData) {
