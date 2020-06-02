@@ -17,6 +17,11 @@ class MainHandler(tornado.web.RequestHandler):
     def get(self):
         self.render("index.html")
 
+    
+ class DbHandler(tornado.web.RequestHandler):
+    def post(self):
+        print self.render.body
+
 
 #
 # WEBSOCKET COMMUNICATION
@@ -54,7 +59,7 @@ def main():
     parse_command_line()
 
     settings = dict(template_path=os.path.join(os.path.dirname(__file__), "templates"), static_path=os.path.join(os.path.dirname(__file__), "static"))
-    handlers = [(r"/", MainHandler), (r"/stream", DataHandler)]
+    handlers = [(r"/", MainHandler), (r"/stream", DataHandler),(r"/db", DbHandler)]
     
     app = tornado.web.Application(handlers, **settings)
 
