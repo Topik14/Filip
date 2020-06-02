@@ -406,7 +406,7 @@ $("#send-btn").click(function(){
     $.ajax({
         type: 'POST',
         url: "/db",
-        data: {'id': 1},
+        data: {'data': data},
         dataType: "json",
         success: function (resultData) {
         }
@@ -431,10 +431,10 @@ const checkboxOrientation = document.getElementById('checkbox-orientation');
 function roundValue(array){
     return array.map(item => item.toFixed(3));   //round value
 }
-
+var data=JSON.stringify("")
 
 function streamData(){
-    let data = JSON.stringify({
+    data = JSON.stringify({
         id: dataId,
         deltaTime: SAMPLING_INTERVAL,
         acceleration: checkboxAcceleration.checked ? roundValue(currentAcceleration) : undefined,
