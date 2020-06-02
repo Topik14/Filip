@@ -23,12 +23,13 @@ class DbHandler(tornado.web.RequestHandler):
     def post(self):
         print self.request.body
         db=torndb.Connection("localhost","poit","root","kofola")
+        db.insert("insert into zadanie(data) values('"+self.request.body+"')")
 
 class DbHandlerFile(tornado.web.RequestHandler):
     def post(self):
         print self.request.body
-        db=torndb.Connection("localhost","poit","root","kofola")
-
+        dbfile=open("static/test.txt","a+")
+        dbfile.write("zapisane")
 
 
 
