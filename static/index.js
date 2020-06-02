@@ -421,7 +421,7 @@ $("#database-nav-item-rotation-rate").click(function(){
     $.ajax({
         type: 'POST',
         url: "/db",
-        data: JSON.stringify({'data':accelerationData}),
+        data: JSON.stringify({'data':data}),
         dataType: "json",
         success: function (resultData) {
         }
