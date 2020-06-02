@@ -702,7 +702,7 @@ navItemFileAcceleration.onclick = () => {
 
     consoleVisibility(true);
     graphVisibility(false);
-    gaugeVisibility(true);
+    gaugeVisibility(false);
 
 }
 navItemFileRotationRate.onclick = () => {
@@ -710,12 +710,12 @@ navItemFileRotationRate.onclick = () => {
 
     consoleVisibility(true);
     graphVisibility(false);
-    gaugeVisibility(true);
+    gaugeVisibility(false);
 }
 navItemFileOrientation.onclick = () => {
     graphType = 'orientation';
 
     consoleVisibility(true);
     graphVisibility(false);
-    gaugeVisibility(true);
+    gaugeVisibility(false);
 }
