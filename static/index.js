@@ -403,7 +403,7 @@ var gaugeZ = new Gauge(targetZ).setOptions(opts);
 //
 $("#database-nav-item-acceleration").click(function(){
     
-    consoleLog("CON", "Saved");
+    consoleLog("Saved");
     $.ajax({
         type: 'POST',
         url: "/db",
@@ -412,15 +412,16 @@ $("#database-nav-item-acceleration").click(function(){
         success: function (resultData) {
         }
     });
-    consoleLog("Saved");
+    
 })
 
 $("#database-nav-item-rotation-rate").click(function(){
 
+    consoleLog("Saved");
     $.ajax({
         type: 'POST',
         url: "/db",
-        data: {'data':currentStream},
+        data: JSON.stringify({'data':accelerationData}),
         dataType: "json",
         success: function (resultData) {
         }
@@ -430,10 +431,11 @@ $("#database-nav-item-rotation-rate").click(function(){
 
 $("#database-nav-item-orientation").click(function(){
 
+    consoleLog("Saved");
     $.ajax({
         type: 'POST',
         url: "/db",
-        data: {'data': data},
+        data: JSON.stringify({'data':currentAcceleration[0]}),
         dataType: "json",
         success: function (resultData) {
         }
