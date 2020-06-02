@@ -5,8 +5,7 @@ import tornado.httpserver
 import tornado.ioloop
 import tornado.web
 import tornado.websocket
-import MySQLdb
-import ConfigParser
+import torndb
 
 from tornado.options import parse_command_line
 from tornado.escape import json_decode, json_encode
@@ -20,9 +19,12 @@ class MainHandler(tornado.web.RequestHandler):
         self.render("index.html")
 
     
- class DbHandler(tornado.web.RequestHandler):
+class DbHandler(tornado.web.RequestHandler):
     def post(self):
-        print self.render.body
+        print self.request.body
+        db=torndb.Connection("localhost","poit","root","kofola")
+
+
 
 #
 # WEBSOCKET COMMUNICATION
@@ -41,15 +43,15 @@ class DataHandler(tornado.websocket.WebSocketHandler):
 #database
 #
  
-config = ConfigParser.ConfigParser()
-config.read('config.cfg')
-myhost = config.get('mysqlDB', 'host')
-myuser = config.get('mysqlDB', 'user')
-mypasswd = config.get('mysqlDB', 'passwd')
-mydb = config.get('mysqlDB', 'db')
-print myhost
+# config = ConfigParser.ConfigParser()
+# config.read('config.cfg')
+# myhost = config.get('mysqlDB', 'host')
+# myuser = config.get('mysqlDB', 'user')
+# mypasswd = config.get('mysqlDB', 'passwd')
+# mydb = config.get('mysqlDB', 'db')
+# print myhost
 
-db = MySQLdb.connect(host=myhost,user=myuser,passwd=mypasswd,db=mydb)
+# db = MySQLdb.connect(host=myhost,user=myuser,passwd=mypasswd,db=mydb)
 
 
 #
