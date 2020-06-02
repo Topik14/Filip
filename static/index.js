@@ -419,7 +419,7 @@ $("#database-nav-item-rotation-rate").click(function(){
     $.ajax({
         type: 'POST',
         url: "/db",
-        data: {'data': dataId, 'current acc':roundValue(currentAcceleration) },
+        data: {'data': dataId, 'current acc':currentAcceleration[0]},
         dataType: "json",
         success: function (resultData) {
         }
