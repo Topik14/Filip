@@ -421,7 +421,7 @@ $("#database-nav-item-rotation-rate").click(function(){
     $.ajax({
         type: 'POST',
         url: "/db",
-        data: JSON.stringify({'data':[accelerationData[0],currentAcceleration[1],currentAcceleration[2]]}),
+        data: JSON.stringify({'data':rotationRateData}),
         dataType: "json",
         success: function (resultData) {
         }
@@ -435,7 +435,7 @@ $("#database-nav-item-orientation").click(function(){
     $.ajax({
         type: 'POST',
         url: "/db",
-        data: JSON.stringify({'data':accelerationData}),
+        data: JSON.stringify({'data':orientationData}),
         dataType: "json",
         success: function (resultData) {
         }
