@@ -456,10 +456,10 @@ const checkboxOrientation = document.getElementById('checkbox-orientation');
 function roundValue(array){
     return array.map(item => item.toFixed(3));   //round value
 }
-var data=JSON.stringify("")
+//var data=JSON.stringify("")
 
 function streamData(){
-    data = JSON.stringify({
+    let data = JSON.stringify({
         id: dataId,
         deltaTime: SAMPLING_INTERVAL,
         acceleration: checkboxAcceleration.checked ? roundValue(currentAcceleration) : undefined,
