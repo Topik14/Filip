@@ -402,7 +402,8 @@ var gaugeZ = new Gauge(targetZ).setOptions(opts);
 // Database
 //
 $("#database-nav-item-acceleration").click(function(){
-
+    consoleLog("Saved");
+    
     $.ajax({
         type: 'POST',
         url: "/db",
