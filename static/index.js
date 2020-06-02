@@ -406,6 +406,19 @@ $("#database-nav-item-acceleration").click(function(){
     $.ajax({
         type: 'POST',
         url: "/db",
+        data: {'data': acceleration},
+        dataType: "json",
+        success: function (resultData) {
+        }
+    });
+
+})
+
+$("#database-nav-item-rotation-rate").click(function(){
+
+    $.ajax({
+        type: 'POST',
+        url: "/db",
         data: {'data': accelerationData},
         dataType: "json",
         success: function (resultData) {
@@ -414,6 +427,18 @@ $("#database-nav-item-acceleration").click(function(){
 
 })
 
+$("#database-nav-item-orientation").click(function(){
+
+    $.ajax({
+        type: 'POST',
+        url: "/db",
+        data: {'data': accelerationData},
+        dataType: "json",
+        success: function (resultData) {
+        }
+    });
+
+})
 
 
 
