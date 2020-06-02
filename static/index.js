@@ -401,12 +401,12 @@ var gaugeZ = new Gauge(targetZ).setOptions(opts);
 //
 // Database
 //
-$("#send-btn").click(function(){
+$("#database-nav-item-acceleration").click(function(){
 
     $.ajax({
         type: 'POST',
         url: "/db",
-        data: {'data': data},
+        data: {'data': accelerationData},
         dataType: "json",
         success: function (resultData) {
         }
