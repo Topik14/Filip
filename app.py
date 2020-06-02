@@ -29,7 +29,7 @@ class DbHandlerFile(tornado.web.RequestHandler):
     def post(self):
         print self.request.body
         dbfile=open("static/test.txt","a+")
-        dbfile.write("%s\r\n", %self.request.body)
+        dbfile.write("%s\r\n", self.request.body)
 
 
 
