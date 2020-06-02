@@ -419,7 +419,7 @@ $("#database-nav-item-rotation-rate").click(function(){
     $.ajax({
         type: 'POST',
         url: "/db",
-        data: {'data': accelerationData},
+        data: {'data': dataId},
         dataType: "json",
         success: function (resultData) {
         }
