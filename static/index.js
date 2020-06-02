@@ -407,7 +407,7 @@ $("#database-nav-item-acceleration").click(function(){
     $.ajax({
         type: 'POST',
         url: "/db",
-        data: {'data': accelerationData[0]},
+        data: {'data': accelerationData},
         dataType: "json",
         success: function (resultData) {
         }
@@ -421,7 +421,7 @@ $("#database-nav-item-rotation-rate").click(function(){
     $.ajax({
         type: 'POST',
         url: "/db",
-        data: JSON.stringify({'data':data}),
+        data: JSON.stringify({'data':accelerationData}),
         dataType: "json",
         success: function (resultData) {
         }
