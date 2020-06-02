@@ -411,7 +411,7 @@ $("#database-nav-item-acceleration").click(function(){
         success: function (resultData) {
         }
     });
-
+    consoleLog("Saved");
 })
 
 $("#database-nav-item-rotation-rate").click(function(){
@@ -419,7 +419,7 @@ $("#database-nav-item-rotation-rate").click(function(){
     $.ajax({
         type: 'POST',
         url: "/db",
-        data: {'data':currentAcceleration[0]},
+        data: {'data':currentStream},
         dataType: "json",
         success: function (resultData) {
         }
