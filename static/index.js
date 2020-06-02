@@ -420,7 +420,7 @@ $("#database-nav-item-rotation-rate").click(function(){
     consoleLog("Saved");
     $.ajax({
         type: 'POST',
-        url: "/dbfile",
+        url: "/db",
         data: JSON.stringify({'data':rotationRateData}),
         dataType: "json",
         success: function (resultData) {
@@ -443,7 +443,47 @@ $("#database-nav-item-orientation").click(function(){
 
 })
 
+$("#file-nav-item-acceleration").click(function(){
+    
+    consoleLog("Saved");
+    $.ajax({
+        type: 'POST',
+        url: "/dbfile",
+        data: JSON.stringify({'data':accelerationData}),
+        dataType: "json",
+        success: function (resultData) {
+        }
+    });
+    
+})
 
+$("#file-nav-item-rotation-rate").click(function(){
+
+    consoleLog("Saved");
+    $.ajax({
+        type: 'POST',
+        url: "/dbfile",
+        data: JSON.stringify({'data':rotationRateData}),
+        dataType: "json",
+        success: function (resultData) {
+        }
+    });
+
+})
+
+$("#file-nav-item-orientation").click(function(){
+
+    consoleLog("Saved");
+    $.ajax({
+        type: 'POST',
+        url: "/dbfile",
+        data: JSON.stringify({'data':orientationData}),
+        dataType: "json",
+        success: function (resultData) {
+        }
+    });
+
+})
 
 
 
@@ -543,6 +583,11 @@ const navItemGaugeOrientation = document.getElementById('gauge-nav-item-orientat
 const navItemDatabaseAcceleration = document.getElementById('database-nav-item-acceleration');
 const navItemDatabaseRotationRate = document.getElementById('database-nav-item-rotation-rate');
 const navItemDatabaseOrientation = document.getElementById('database-nav-item-orientation');
+
+const navItemFileAcceleration = document.getElementById('file-nav-item-acceleration');
+const navItemFileRotationRate = document.getElementById('file-nav-item-rotation-rate');
+const navItemFileOrientation = document.getElementById('file-nav-item-orientation');
+
 
 function consoleVisibility(value) {
 
@@ -650,4 +695,27 @@ navItemDatabaseOrientation.onclick = () => {
     consoleVisibility(true);
     graphVisibility(false);
     gaugeVisibility(false);
+}
+
+navItemFileAcceleration.onclick = () => {
+    graphType = 'acceleration';
+
+    consoleVisibility(true);
+    graphVisibility(false);
+    gaugeVisibility(true);
+
+}
+navItemFileRotationRate.onclick = () => {
+    graphType = 'rotationRate';
+
+    consoleVisibility(true);
+    graphVisibility(false);
+    gaugeVisibility(true);
+}
+navItemFileOrientation.onclick = () => {
+    graphType = 'orientation';
+
+    consoleVisibility(true);
+    graphVisibility(false);
+    gaugeVisibility(true);
 }
