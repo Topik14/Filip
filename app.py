@@ -6,8 +6,10 @@ import tornado.ioloop
 import tornado.web
 import tornado.websocket
 import MySQLdb
+import ConfigParser
 
 from tornado.options import parse_command_line
+from tornado.escape import json_decode, json_encode
 
 
 #
@@ -17,6 +19,10 @@ class MainHandler(tornado.web.RequestHandler):
     def get(self):
         self.render("index.html")
 
+class TestHandler(tornado.web.RequestHandler):
+    def post(self):
+        self.request.argument["id"]
+        self.write("ok")
 
 #
 # WEBSOCKET COMMUNICATION
@@ -35,15 +41,15 @@ class DataHandler(tornado.websocket.WebSocketHandler):
 #database
 #
  
-#config = ConfigParser.ConfigParser()
-#config.read('config.cfg')
-#myhost = config.get('mysqlDB','host')
-#myuser = config.get('mysqlDB','user')
-#mypasswd=config.get('mysqlDB','passwd')
-#mydb = config.get('mysqlDB','db')
-#print myhost
-#
-#db = MySQLdb.connect(host=myhost,user=myuser,passwd=mypasswd,db=mydb)
+config = ConfigParser.ConfigParser()
+config.read('config.cfg')
+myhost = config.get('mysqlDB', 'host')
+myuser = config.get('mysqlDB', 'user')
+mypasswd = config.get('mysqlDB', 'passwd')
+mydb = config.get('mysqlDB', 'db')
+print myhost
+
+db = MySQLdb.connect(host=myhost,user=myuser,passwd=mypasswd,db=mydb)
 
 
 #
