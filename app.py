@@ -25,12 +25,24 @@ class DbHandler(tornado.web.RequestHandler):
         db=torndb.Connection("localhost","poit","root","kofola")
         db.insert("insert into zadanie(data) values('"+self.request.body+"')")
 
-class DbHandlerFile(tornado.web.RequestHandler):
+class DbHandlerFileAcc(tornado.web.RequestHandler):
     def post(self):
         print self.request.body
-        dbfile=open("static/test.txt","a+")
-        dbfile.write(self.request.body)
+        dbfileAcc=open("static/Acceleration.txt","a+")
+        dbfileAcc.write(self.request.body)
 
+
+class DbHandlerFileRot(tornado.web.RequestHandler):
+    def post(self):
+        print self.request.body
+        dbfileRot=open("static/RotateRate.txt","a+")
+        dbfileRot.write(self.request.body)
+
+class DbHandlerFileOri(tornado.web.RequestHandler):
+    def post(self):
+        print self.request.body
+        dbfileOri=open("static/Orientation.txt","a+")
+        dbfileOri.write(self.request.body)
 
 
 #
@@ -57,7 +69,7 @@ def main():
     parse_command_line()
 
     settings = dict(template_path=os.path.join(os.path.dirname(__file__), "templates"), static_path=os.path.join(os.path.dirname(__file__), "static"))
-    handlers = [(r"/", MainHandler), (r"/stream", DataHandler),(r"/db", DbHandler),(r"/dbfile", DbHandlerFile)]
+    handlers = [(r"/", MainHandler), (r"/stream", DataHandler),(r"/db", DbHandler),(r"/dbfileRot", DbHandlerFileAcc),(r"/dbfileRot", DbHandlerFileRot),(r"/dbfileOri", DbHandlerFileOri)]
     
     app = tornado.web.Application(handlers, **settings)
 
