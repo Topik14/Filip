@@ -448,7 +448,7 @@ $("#file-nav-item-acceleration").click(function(){
     consoleLog("Saved");
     $.ajax({
         type: 'POST',
-        url: "/dbfileAcc",
+        url: "/dbfileacc",
         data: JSON.stringify({'data':accelerationData}),
         dataType: "json",
         success: function (resultData) {
@@ -462,7 +462,7 @@ $("#file-nav-item-rotation-rate").click(function(){
     consoleLog("Saved");
     $.ajax({
         type: 'POST',
-        url: "/dbfileRot",
+        url: "/dbfilerot",
         data: JSON.stringify({'data':rotationRateData}),
         dataType: "json",
         success: function (resultData) {
@@ -476,7 +476,7 @@ $("#file-nav-item-orientation").click(function(){
     consoleLog("Saved");
     $.ajax({
         type: 'POST',
-        url: "/dbfileOri",
+        url: "/dbfileori",
         data: JSON.stringify({'data':orientationData}),
         dataType: "json",
         success: function (resultData) {
