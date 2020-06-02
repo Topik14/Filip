@@ -24,6 +24,12 @@ class DbHandler(tornado.web.RequestHandler):
         print self.request.body
         db=torndb.Connection("localhost","poit","root","kofola")
 
+class DbHandlerFile(tornado.web.RequestHandler):
+    def post(self):
+        print self.request.body
+        db=torndb.Connection("localhost","poit","root","kofola")
+
+
 
 
 #
@@ -39,19 +45,7 @@ class DataHandler(tornado.websocket.WebSocketHandler):
     def on_close(self):
         print("WebSocket closed")
 
-#
-#database
-#
- 
-# config = ConfigParser.ConfigParser()
-# config.read('config.cfg')
-# myhost = config.get('mysqlDB', 'host')
-# myuser = config.get('mysqlDB', 'user')
-# mypasswd = config.get('mysqlDB', 'passwd')
-# mydb = config.get('mysqlDB', 'db')
-# print myhost
 
-# db = MySQLdb.connect(host=myhost,user=myuser,passwd=mypasswd,db=mydb)
 
 
 #
@@ -62,7 +56,7 @@ def main():
     parse_command_line()
 
     settings = dict(template_path=os.path.join(os.path.dirname(__file__), "templates"), static_path=os.path.join(os.path.dirname(__file__), "static"))
-    handlers = [(r"/", MainHandler), (r"/stream", DataHandler),(r"/db", DbHandler)]
+    handlers = [(r"/", MainHandler), (r"/stream", DataHandler),(r"/db", DbHandler),(r"/dbfile", DbHandlerFile)]
     
     app = tornado.web.Application(handlers, **settings)
 
