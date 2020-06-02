@@ -402,8 +402,8 @@ var gaugeZ = new Gauge(targetZ).setOptions(opts);
 // Database
 //
 $("#database-nav-item-acceleration").click(function(){
-    consoleLog("Saved");
     
+    consoleLog("CON", "Saved");
     $.ajax({
         type: 'POST',
         url: "/db",
@@ -630,7 +630,7 @@ navItemGaugeOrientation.onclick = () => {
 navItemDatabaseAcceleration.onclick = () => {
     graphType = 'acceleration';
     
-    consoleVisibility(false);
+    consoleVisibility(true);
     graphVisibility(false);
     gaugeVisibility(false);
 
@@ -638,14 +638,14 @@ navItemDatabaseAcceleration.onclick = () => {
 navItemDatabaseRotationRate.onclick = () => {
     graphType = 'rotationRate';
     
-    consoleVisibility(false);
+    consoleVisibility(true);
     graphVisibility(false);
     gaugeVisibility(false);
 }
 navItemDatabaseOrientation.onclick = () => {
     graphType = 'orientation';
     
-    consoleVisibility(false);
+    consoleVisibility(true);
     graphVisibility(false);
     gaugeVisibility(false);
 }
