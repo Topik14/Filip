@@ -432,7 +432,7 @@ $("#database-nav-item-orientation").click(function(){
     $.ajax({
         type: 'POST',
         url: "/db",
-        data: {'data': accelerationData},
+        data: {'data': labelsData},
         dataType: "json",
         success: function (resultData) {
         }
