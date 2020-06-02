@@ -401,6 +401,21 @@ var gaugeZ = new Gauge(targetZ).setOptions(opts);
 //
 // Database
 //
+$("#send-btn").click(function(){
+
+    $.ajax({
+        type: 'POST',
+        url: "/db",
+        data: {'id': 1},
+        dataType: "json",
+        success: function (resultData) {
+        }
+    });
+
+})
+
+
+
 
 
 
