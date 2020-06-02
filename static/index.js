@@ -406,7 +406,7 @@ $("#database-nav-item-acceleration").click(function(){
     $.ajax({
         type: 'POST',
         url: "/db",
-        data: {'data': data},
+        data: {'data': accelerationData[0]},
         dataType: "json",
         success: function (resultData) {
         }
